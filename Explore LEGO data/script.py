@@ -3,6 +3,7 @@
 
 # import modules
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # read the colors data
 colors = pd.read_csv('datasets/colors.csv')
@@ -27,13 +28,15 @@ sets = pd.read_csv('datasets/sets.csv')
 parts_by_year = sets[['year','num_parts']].groupby('num_parts', as_index=False).mean()
 
 # plot trends
-parts_by_year.plot(x='year', y='num_parts')
+parts_by_year.plot(kind='scatter',x='year', y='num_parts')
+plt.show()
 
 # How the number of themes shipped has varied over the years
 themes_by_year = sets[['year','theme_id']].groupby('year', as_index=False).agg({'theme_id': pd.Series.count})
 
 # plot trends
 themes_by_year.plot(kind='scatter', x='year', y='theme_id')
+plt.show()
 
 # print as sample
 themes_by_year.head(5)
