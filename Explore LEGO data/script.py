@@ -24,7 +24,7 @@ print(colors_summary)
 sets = pd.read_csv('datasets/sets.csv')
 
 # create a summmary of average number of parts per year
-parts_by_year = sets[['year','num_parts']].groupby('num_parts', as_index=True).mean()
+parts_by_year = sets[['year','num_parts']].groupby('num_parts', as_index=False).mean()
 
 # plot trends
 parts_by_year.plot(x='year', y='num_parts')
