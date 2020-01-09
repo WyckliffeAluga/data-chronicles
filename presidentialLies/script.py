@@ -26,7 +26,7 @@ first_record = records[0]
 
 lieBucket = []
 for record in records:
-    date = record.find('strong').text[0:-1] +, 2017
+    date = record.find('strong').text[0:-1] + ', 2017'
     lie  = record.contents[1][1:-2]
     explanation = record.find('a').text[1:-1]
     url  = record.find('a')['href']
