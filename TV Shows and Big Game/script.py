@@ -43,8 +43,13 @@ plt.ylabel('number of super bowls')
 plt.show()
 
 # display the super bowls with the highest and lowest combined points
-print(superBowls[superBowls['combined_pts'] > 70])
-print(superBowls[superBowls['combined_pts'] < 25])
+highest = superBowls[superBowls['combined_pts'] > 70]
+lowest  = superBowls[superBowls['combined_pts'] < 25]
+
+# beautify
+#highest_message = 'Super Bowl ' + str(highest.super_bowls.iloc[0]) + 'had the highest combined points of ' + str(highest.combined_pts.iloc[0])
+#print(highest_message)
+#print()
 
 # let us play around with point difference distribution
 
