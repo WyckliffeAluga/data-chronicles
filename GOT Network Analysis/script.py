@@ -100,7 +100,7 @@ plt.show()
 
 # we see a rise in importance of Stannis over the books although he is the third most importance according to degree centrality
 
-# page rank was the initial way Google ranked web pased.
+# page rank was the initial way Google ranked web pages
 # it evaluates the inlinks and outlinks of web pages
 
 # let us look how the character importance according to page ranks
@@ -108,15 +108,15 @@ plt.show()
 # create a list of page rank of all characters in all book { for value in variable}
 evol = (nx.pagerank(book) for book in books)
 
-# make the datagrame
+# Making a DataFrame from the list
 pagerank_evol_df = pd.DataFrame.from_records(evol)
 
-# find the top 4 characters in every book
-set_of_char =set()
+# Finding the top 4 characters in every book
+set_of_char = set()
 for i in range(5):
     set_of_char |= set(list(pagerank_evol_df.T[i].sort_values(ascending=False)[0:4].index))
 list_of_char = list(set_of_char)
 
-# plot the top characters
+# Plotting the top characters
 pagerank_evol_df[list_of_char].plot(figsize=(13,7))
 plt.show()
