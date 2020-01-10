@@ -81,17 +81,42 @@ plt.show()
 # Eddard starck importance dies off , snow wobbles
 # We can look at various measures like betweennness centrality and pagerank
 
-# crate a list of betweennness centrality
-evol = [nx.betweenness_centrality(book, weight='weight') for book in books]
+# Creating a list of betweenness centrality of all the books just like we did for degree centrality
+evol = [nx.betweenness_centrality(book) for book in books]
 
-# make it into a data frame
+# Making a DataFrame from the list
 betweenness_evol_df = pd.DataFrame.from_records(evol)
 
-# find the top 4 characters in every book
-
-set_of_characters = set()
+# Finding the top 4 characters in every book
+set_of_char = set()
 for i in range(5):
-    set_of_characters |= set(list(betweenness_evol_df.T(i).sort_values(ascending=False)[0:4].index))
-list_of_characters = list(set_of_characters)
+    set_of_char |= set(list(betweenness_evol_df.T[i].sort_values(ascending=False)[0:4].index))
+list_of_char = list(set_of_char)
 
-print("woof done with that")
+# Plotting the evolution of the top characters
+betweenness_evol_df[list_of_char].plot(figsize=(13,7))
+plt.show()
+#print("woof done with that")
+
+# we see a rise in importance of Stannis over the books although he is the third most importance according to degree centrality
+
+# page rank was the initial way Google ranked web pased.
+# it evaluates the inlinks and outlinks of web pages
+
+# let us look how the character importance according to page ranks
+
+# create a list of page rank of all characters in all book { for value in variable}
+evol = (nx.pagerank(book) for book in books)
+
+# make the datagrame
+pagerank_evol_df = pd.DataFrame.from_records(evol)
+
+# find the top 4 characters in every book
+set_of_char =set()
+for i in range(5):
+    set_of_char |= set(list(pagerank_evol_df.T[i].sort_values(ascending=False)[0:4].index))
+list_of_char = list(set_of_char)
+
+# plot the top characters
+pagerank_evol_df[list_of_char].plot(figsize=(13,7))
+plt.show()
