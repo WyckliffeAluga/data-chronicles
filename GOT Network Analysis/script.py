@@ -106,17 +106,28 @@ plt.show()
 # let us look how the character importance according to page ranks
 
 # create a list of page rank of all characters in all book { for value in variable}
-evol = (nx.pagerank(book) for book in books)
+#evol = (nx.pagerank(book) for book in books)
 
 # Making a DataFrame from the list
-pagerank_evol_df = pd.DataFrame.from_records(evol)
+#pagerank_evol_df = pd.DataFrame.from_records(evol)
 
 # Finding the top 4 characters in every book
-set_of_char = set()
-for i in range(5):
-    set_of_char |= set(list(pagerank_evol_df.T[i].sort_values(ascending=False)[0:4].index))
-list_of_char = list(set_of_char)
+#set_of_char = set()
+#for i in range(5):
+#    set_of_char |= set(list(pagerank_evol_df.T[i].sort_values(ascending=False)[0:4].index))
+#list_of_char = list(set_of_char)
 
 # Plotting the top characters
-pagerank_evol_df[list_of_char].plot(figsize=(13,7))
-plt.show()
+#pagerank_evol_df[list_of_char].plot(figsize=(13,7))
+#plt.show()
+
+# find the correlation between different measures in the fifth book
+measures = [nx.pagerank(books[4]),
+            nx.betweenness_centrality(books[4]),
+            nx.degree_centrality(books[4])]
+
+# Creating the correlation DataFrame
+cor = pd.DataFrame.from_records(measures)
+
+# Calculating the correlation
+print(cor.T.corr())
