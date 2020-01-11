@@ -106,4 +106,16 @@ def assign_y_coord(row):
     if row.zone in [7,8,9]:
         return 1
 
-    
+# assign cartesian coordinates to pitches
+judge_strike_hr = judge_hr.copy().loc[judge_hr.zon <= 9]
+
+judge_strike_hr['zone_x'] = judge_strike_hr.apply(assign_x_coord, axis=1)
+judge_strike_hr['zone_y'] = judge_strike_hr.apply(assign_y_coord, axis=1)
+
+plt.hist2d(judge_strike_hr.zone_x, judge_strike_hr.zone_y, bins = 3, cmap='Blues')
+plt.title('Aaron Judge Home Runs on\n Pitches in the Strike Zone, 2015-2017')
+plt.gca().get_xaxis().set_visible(False)
+plt.gca().get_yaxis().set_visible(False)
+cb = plt.colorbar()
+cb.set_label('Counts in Bin')
+plt.show()
