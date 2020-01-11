@@ -37,3 +37,15 @@ print(judge_events_2017.value_counts())
 stanton_events_2017 = stanton.loc[stanton['game_year'] == 2017].events
 print("\nGiancarlo Stanton batted ball event totals, 2017:")
 print(stanton_events_2017.value_counts())
+
+
+# analyze home runs
+# filter homeruns only
+judge_hr = judge[judge['events'] == 'home_run']
+stanton_hr = stanton[stanton['events'] == 'home_run']
+
+# plot it out
+fig1, axs1 = plt.subplots(ncols=2, sharex=True, sharey=True)
+sns.regplot(x='launch_speed', y='launch_angle', fit_reg=False, color='tab:blue', data=judge_hr, ax=axs1[0]).set_title('Aaron Judge\nHome Runs, 2015-2017')
+sns.regplot(x='launch_speed', y='launch_angle', fit_reg=False, color='tab:blue', data=stanton_hr, ax=axs1[1]).set_title('Giancarlo Stanton\nHome Runs, 2015-2017')
+plt.show()
