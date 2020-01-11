@@ -9,3 +9,13 @@
 # Here I am going to wrangle , visualize and visualize Statcast data to compare two key players
 
 # import some modules
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+# laod Aaron Judge's data
+judge = pd.read_csv('datasets/judge.csv')
+
+# load Giancarlo Stanton's data
+stanton = pd.read_csv('datasets/stanton.csv')
