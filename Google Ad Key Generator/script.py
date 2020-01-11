@@ -72,7 +72,7 @@ keywords_final = keyword_df.append(keywords_phrase)
 
 # view the summary of the campaign worl
 summary = keywords_final.groupby(['Ad Group','Criterion Type'])['keyword'].count()
-#print(summary)
+print(summary)
 
 # save a csv file
 keywords_final.to_csv('keywords.csv', index=False)
