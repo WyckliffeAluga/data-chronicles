@@ -79,3 +79,4 @@ trends['jenner'] = trends[['kendall','kylie']].sum(axis='columns').div(2)
 
 # plot
 trends[['kardashian','jenner']].plot(title='Plotting')
+plt.show()
