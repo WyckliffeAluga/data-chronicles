@@ -90,4 +90,20 @@ def assign_x_coord(row):
 # define a function to assign y coordinates
 
 def assign_y_coord(row):
+    """
+    Assigns a y-coordinate to Statcast's strike zone numbers. Zones 11, 12, 13,
+    and 14 are ignored for plotting simplicity.
+    """
+    # upper third of strike zone
+    if row.zone in [1,2,3]:
+        return 3
+
+    # middle third of strike zone
+    if row.zone in [4,5,6]:
+        return 2
+
+    # lower third of strike zone
+    if row.zone in [7,8,9]:
+        return 1
+
     
