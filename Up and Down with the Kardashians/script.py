@@ -10,7 +10,7 @@
 
 # load the pandas
 import pandas as pd
-import matplolib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # read the dataset
 trends = pd.read_csv('datasets/trends_kj_sisters.csv')
