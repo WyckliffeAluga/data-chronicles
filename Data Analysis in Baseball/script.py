@@ -120,7 +120,7 @@ cb = plt.colorbar()
 cb.set_label('Counts in Bin')
 plt.show()
 
-stanton_strike_hr = stanton_hr.copy().loc[judge_hr.zone <=9]
+stanton_strike_hr = stanton_hr.copy().loc[stanton_hr.zone <=9]
 
 stanton_strike_hr['zone_x'] = stanton_strike_hr.apply(assign_x_coord, axis=1)
 stanton_strike_hr['zone_y'] = stanton_strike_hr.apply(assign_y_coord, axis=1)
