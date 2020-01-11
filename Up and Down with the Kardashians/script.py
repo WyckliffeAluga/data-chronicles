@@ -11,4 +11,8 @@
 # load the pandas
 import pandas as pd
 
-# read the dataset 
+# read the dataset
+trends = pd.read_csv('datasets/trends_kj_sisters.csv')
+
+# inspect a sample
+print(trends.head())
