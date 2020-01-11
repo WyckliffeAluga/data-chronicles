@@ -10,6 +10,7 @@
 
 # load the pandas
 import pandas as pd
+import matplolib.pyplot as plt
 
 # read the dataset
 trends = pd.read_csv('datasets/trends_kj_sisters.csv')
@@ -52,5 +53,12 @@ for column in trends.columns :
 trends.month = pd.to_datetime(trends.month)
 
 # inspect
-print(trends.info())
-print(trends.head())
+#print(trends.info())
+#print(trends.head())
+
+# set month as indet
+trends = trends.set_index('month')
+
+# plot
+trends.plot()
+plt.show()
