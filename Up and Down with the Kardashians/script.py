@@ -70,3 +70,12 @@ plt.show()
 # smooth out the data
 trends.rolling(12).mean().plot()
 plt.show()
+
+# so big question who is more famous Kardashians or Jenner trends_kj_sisters
+
+# average search interest for each family line
+trends['kardashian'] = trends[['kim','khloe','kourtney']].sum(axis='columns').div(3)
+trends['jenner'] = trends[['kendall','kylie']].sum(axis='columns').div(2)
+
+# plot
+trends[['kardashian','jenner']].plot(title='Plotting')
