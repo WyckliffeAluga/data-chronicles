@@ -24,4 +24,16 @@ stanton = pd.read_csv('datasets/stanton.csv')
 pd.set_option('display.max_columns', None)
 
 # display the last five rows of Jude's file
-judge.tail()
+#print(judge.tail())
+
+# let us dig in then
+
+# All of Judge;s batted ball event in 2017
+judge_events_2017 = judge.loc[judge['game_year'] == 2017].events
+print("Aaron Judge batted ball event totals, 2017:")
+print(judge_events_2017.value_counts())
+
+# all of Stanton's batted ball events in 2017
+stanton_events_2017 = stanton.loc[stanton['game_year'] == 2017].events
+print("\nGiancarlo Stanton batted ball event totals, 2017:")
+print(stanton_events_2017.value_counts())
