@@ -55,3 +55,13 @@ fig2, axs2 = plt.subplots(ncols=2, sharex=True, sharey=True)
 sns.kdeplot(judge_hr.launch_speed, judge_hr.launch_angle, cmap="Blues", shade=True, shade_lowest=False, ax=axs2[0]).set_title('Aaron Judge\nHome Runs, 2015-2017')
 sns.kdeplot(judge_hr.launch_speed, judge_hr.launch_angle, cmap="Blues", shade=True, shade_lowest=False, ax=axs2[1]).set_title('Giancarlo Stanton\nHome Runs, 2015-2017')
 plt.show()
+
+# let us analyze home runs by pitch velocity
+
+# combine data for thr two sluggers
+
+judge_stanton_hr = pd.concat([judge_hr, stanton_hr])
+
+# create a box plot to describe the pitc velocity
+sns.boxplot('player_name','release_speed',data=judge_stanton_hr, color='blue' ).set_title('Home Runs, 2015-2017')
+plt.show()
