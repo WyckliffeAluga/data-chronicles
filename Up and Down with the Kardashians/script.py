@@ -45,5 +45,12 @@ for column in trends.columns :
         trends[column] = pd.to_numeric(trends[column])
 
 # check to see if miracle was done
+#print(trends.info())
+#print(trends.head())
+
+# next convert month to type datetime
+trends.month = pd.to_datetime(trends.month)
+
+# inspect
 print(trends.info())
 print(trends.head())
