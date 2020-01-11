@@ -19,3 +19,9 @@ judge = pd.read_csv('datasets/judge.csv')
 
 # load Giancarlo Stanton's data
 stanton = pd.read_csv('datasets/stanton.csv')
+
+# display all the columbns
+pd.set_option('display.max_columns', None)
+
+# display the last five rows of Jude's file
+judge.tail()
