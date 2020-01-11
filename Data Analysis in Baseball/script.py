@@ -65,3 +65,29 @@ judge_stanton_hr = pd.concat([judge_hr, stanton_hr])
 # create a box plot to describe the pitc velocity
 sns.boxplot('player_name','release_speed',data=judge_stanton_hr, color='blue' ).set_title('Home Runs, 2015-2017')
 plt.show()
+
+# home runs by pickt location
+
+# define a function to assign x coordingate from Statcast data
+
+def assign_x_coord(row):
+    """
+    Assigns an x-coordinate to Statcast's strike zone numbers. Zones 11, 12, 13,
+    and 14 are ignored for plotting simplicity.
+    """
+    # left third of strik zone
+    if row.zone in [1,4,7]:
+        return 1
+
+    # middle third of strike zone
+    if row.zone in [2,5,8]:
+        return 2
+
+    # right third of strike zone
+    if row.zone in [3,6,9]:
+        return 3
+
+# define a function to assign y coordinates
+
+def assign_y_coord(row):
+    
