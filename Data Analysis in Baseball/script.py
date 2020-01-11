@@ -107,7 +107,7 @@ def assign_y_coord(row):
         return 1
 
 # assign cartesian coordinates to pitches
-judge_strike_hr = judge_hr.copy().loc[judge_hr.zon <= 9]
+judge_strike_hr = judge_hr.copy().loc[judge_hr.zone <= 9]
 
 judge_strike_hr['zone_x'] = judge_strike_hr.apply(assign_x_coord, axis=1)
 judge_strike_hr['zone_y'] = judge_strike_hr.apply(assign_y_coord, axis=1)
