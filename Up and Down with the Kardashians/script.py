@@ -27,4 +27,23 @@ print(trends.head())
 trends.columns = ['month', 'kim', 'khloe','kourtney','kendall','kylie']
 
 # check
+print(trends.tail())
+
+# this '<' sign is going to be an issue
+# check the info
+print(trends.info())
+
+# some columns are not integers becasue of '<' this thing
+# let us remove it then change the type to int
+
+# loop through the columns
+for column in trends.columns :
+    # only modify the columns that have '<'
+    if '<' in trends[column].to_string():
+        # remove the '<' and convert to int
+        trends[column] = trends[column].str.replace('<','')
+        trends[column] = pd.to_numeric(trends[column])
+
+# check to see if miracle was done
+print(trends.info())
 print(trends.head())
