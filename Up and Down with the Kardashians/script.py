@@ -60,11 +60,11 @@ trends.month = pd.to_datetime(trends.month)
 trends = trends.set_index('month')
 
 # plot
-trends.plot(title='Family trend')
+trends.plot(title='family Trends')
 plt.show()
 
 # zoom in from January 2014 durying kylie's rise
-trends.loc['2014-01':'2019-03'].plot(title="'Kylie's Rise Zoom")
+trends.loc['2014-01':'2019-03'].plot(title="Kylie's Rise Zoom")
 plt.show()
 
 # smooth out the data
