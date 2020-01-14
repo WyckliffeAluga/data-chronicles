@@ -6,7 +6,7 @@ def perfom_bernoulli_trials(n, p):
     """ Perfom n bernoulli trials with success probability P and retun number of successes"""
 
     # initialixe number of successes
-    n_success = [0]
+    n_success = 0
 
     # perfom trials
     for i in range(n):
