@@ -4,6 +4,7 @@
 import fuzzy
 import pandas as pd
 import numpy as np
+import matplolib.pyplot as plt
 
 # explore the output
 fuzzy.nysiis('John')
@@ -86,7 +87,7 @@ males_by_yr    = []
 females_by_yr  = []
 unknowns_by_yr = []
 
-# looping through years to find the number of male female and unknowns_by_yr 
+# looping through years to find the number of male female and unknowns_by_yr
 
 for year in years :
 
@@ -108,3 +109,16 @@ for year in years :
 data = np.array([males_by_yr, females_by_yr, unknowns_by_yr])
 headers = ['males', 'females', 'unkowns']
 data = pd.DataFrame(data, headers, years)
+
+# plot bar chart
+_=plt.bar(yers, unknowns_by_yr, title='Foreign born authors')
+plt.show()
+
+# create a new list where 0.25 is aded to each other
+years_shifted = [year + 0.25 for year in years]
+
+# plot males
+_=plt.bar(years, males_by_yr, width=0.25, color='lightblue')
+
+# plot female
+_=plt.plot(years_shifted, females_by_yr, width=0.25, color='red')
