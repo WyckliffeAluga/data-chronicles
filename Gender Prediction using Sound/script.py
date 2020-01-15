@@ -71,3 +71,9 @@ for name in author_df['nysiis_name'] :
 
     else:
         author_gender.append(babies_df.iloc[author_idx, 3])
+
+# adding authort_gender to the author df
+author_df['author_gender'] = author_gender
+
+# count the author's genders 
+author_df['author_gender'].value_counts()
