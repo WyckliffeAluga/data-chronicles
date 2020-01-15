@@ -3,6 +3,7 @@
 
 import fuzzy
 import pandas as pd
+import numpy as np
 
 # explore the output
 fuzzy.nysiis('John')
@@ -24,3 +25,13 @@ author_df['first_name'] = first_name
 
 # sample the head
 #print(author_df.head())
+
+# loop through first names and create the fuzzy equivalent
+
+nysiis_name = []
+
+for name in author_df['first_name'] :
+    nytkids_yearly.append(fuzzy.nysiis(name))
+
+# addd nysiis name on the author dataframe
+author_df['nysiis_name'] = nysiis_name
