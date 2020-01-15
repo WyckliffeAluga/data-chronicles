@@ -1,14 +1,14 @@
 
 # Analyze the gender distribution of children's book writers and use sound to match names to gender
 
-#import fuzzy
+import fuzzy
 import pandas as pd
 
 # explore the output
-#fuzzy.nysiis('John')
+fuzzy.nysiis('John')
 
 # testing equivalence of similar sounding words
-#fuzzy.nysiis('Jane')
+fuzzy.nysiis('Jane')
 
 # read the files
 author_df = pd.read_csv('datasets/nytkids_yearly.csv', sep=';')
@@ -23,4 +23,4 @@ for name in author_df['Author'] :
 author_df['first_name'] = first_name
 
 # sample the head
-author_df.head()
+#print(author_df.head())
