@@ -119,6 +119,6 @@ years_shifted = [year + 0.25 for year in years]
 
 # plot males
 _=plt.bar(years, males_by_yr, width=0.25, color='lightblue')
-
 # plot female
 _=plt.plot(years_shifted, females_by_yr, width=0.25, color='red')
+plt.show()
