@@ -53,9 +53,21 @@ for index, row in babies_df.iterrows() :
     elif row['perc_female'] == row['perc_male'] :
         gender.append['N']
 
-# write a function that returns the location of an element in a list 
+# write a function that returns the location of an element in a list
 # where an item doesn't exist , it returns -1
 
 def locate_in_list(a_list, element) :
     loc_of_name = a_list.index(element) if element in a_list else -1
     return loc_of_name
+
+# loop through author_df and append the gender of each author
+author_gender = []
+
+for name in author_df['nysiis_name'] :
+    author_idx = locate_in_list(list(babies_df['babynysiis']), name)
+
+    if author_idx == -1 :
+        author_gender.append('Unknown')
+
+    else:
+        author_gender.append(babies_df.iloc[author_idx, 3])
