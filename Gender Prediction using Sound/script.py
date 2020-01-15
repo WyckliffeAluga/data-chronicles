@@ -75,5 +75,36 @@ for name in author_df['nysiis_name'] :
 # adding authort_gender to the author df
 author_df['author_gender'] = author_gender
 
-# count the author's genders 
-author_df['author_gender'].value_counts()
+# count the author's genders
+print(author_df['author_gender'].value_counts())
+
+# create a list of unique years,
+years = sorted(author_df['Year'].unique())
+
+# initializing lists
+males_by_yr    = []
+females_by_yr  = []
+unknowns_by_yr = []
+
+# looping through years to find the number of male female and unknowns_by_yr 
+
+for year in years :
+
+    males_by_yr.append(len(author_df[
+                (author_df['author_gender'] == 'M') &
+                (author_df['Year'] == year)
+    ]))
+
+    females_by_yr.append(len(author_df[
+                (author_df['author_gender'] == 'F') &
+                (author_df['Year'] == year)
+    ]))
+    unknowns_by_yr.append(len(author_df[
+                (author_df['author_gender'] == 'Unknown') &
+                (author_df['Year'] == year)
+    ]))
+
+# print the yearly valies
+data = np.array([males_by_yr, females_by_yr, unknowns_by_yr])
+headers = ['males', 'females', 'unkowns']
+data = pd.DataFrame(data, headers, years)
