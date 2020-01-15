@@ -35,3 +35,20 @@ for name in author_df['first_name'] :
 
 # addd nysiis name on the author dataframe
 author_df['nysiis_name'] = nysiis_name
+
+# read the babies data base
+babies_df = pd.read_csv('datasets/babynames_nysiis.csv' , sep=';')
+
+# loop through babies_df to and fill up gender 
+gender = []
+
+for index, row in babies_df.iterrows() :
+
+    if row['perc_female']  >  row['perc_male'] :
+        gender.append['F']
+
+    elif row['perc_female'] < row['perc_male'] :
+        gender.append['M']
+
+    elif row['perc_female'] == row['perc_male'] :
+        gender.append['N']
