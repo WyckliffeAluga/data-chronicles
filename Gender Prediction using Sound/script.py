@@ -39,7 +39,7 @@ author_df['nysiis_name'] = nysiis_name
 # read the babies data base
 babies_df = pd.read_csv('datasets/babynames_nysiis.csv' , sep=';')
 
-# loop through babies_df to and fill up gender 
+# loop through babies_df to and fill up gender
 gender = []
 
 for index, row in babies_df.iterrows() :
@@ -52,3 +52,10 @@ for index, row in babies_df.iterrows() :
 
     elif row['perc_female'] == row['perc_male'] :
         gender.append['N']
+
+# write a function that returns the location of an element in a list 
+# where an item doesn't exist , it returns -1
+
+def locate_in_list(a_list, element) :
+    loc_of_name = a_list.index(element) if element in a_list else -1
+    return loc_of_name
