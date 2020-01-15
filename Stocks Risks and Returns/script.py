@@ -1,5 +1,3 @@
-# Use sharpe ration to meausure risk/return in stock market
-# use S & P 500 as benchmark to analyze amazon and facebook
 
 # import some modules
 import pandas as pd
@@ -55,7 +53,7 @@ print(stock_returns.describe())
 # calculate daily benchmark data returns
 sp_returns = benchmarkData['S&P 500'].pct_change()
 
-# visualize it
+# visualize 
 sp_returns.plot(title='S & P 500 daily returns')
 plt.show()
 
