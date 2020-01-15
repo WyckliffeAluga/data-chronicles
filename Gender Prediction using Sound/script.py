@@ -37,7 +37,7 @@ for name in author_df['first_name'] :
 # addd nysiis name on the author dataframe
 author_df['nysiis_name'] = nysiis_name
 
-# read the babies data base
+# read the babies csv
 babies_df = pd.read_csv('datasets/babynames_nysiis.csv' , sep=';')
 
 # loop through babies_df to and fill up gender
@@ -87,7 +87,7 @@ males_by_yr    = []
 females_by_yr  = []
 unknowns_by_yr = []
 
-# looping through years to find the number of male female and unknowns_by_yr
+# looping through years to find the number of male , female and unknowns by year
 
 for year in years :
 
