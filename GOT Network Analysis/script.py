@@ -1,20 +1,15 @@
-# In this project I will try to analyze the co-ocurrence network of the characters in Game of Thrones
-# Two characters are considered to co-occur if their names appear in the vicinity of 15 workd from one another in the books
-# The data set constitutes a network and described the edges between the characters, with some attributes attached to each edges
 
-# Dive in
 
 # Import modules
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
-# read book 1 dataset
+
+# read book 1 
 book1 = pd.read_csv('datasets/book1.csv')
 
 # print out a sample
 print(book1.head(5))
-
-# The data frame has 5 columns (source, target , type , weight and book )
 
 # create an empy graph network
 G_book1 = nx.Graph()
