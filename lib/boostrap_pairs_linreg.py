@@ -14,7 +14,7 @@ def draw_bs_pairs_linreg(x, y, size=1):
 
     # Generate replicates
     for i in range(size):
-        bs_inds = np.random.choice(inds, size=size)
+        bs_inds = np.random.choice(inds, size=len(inds))
         bs_x, bs_y = x[bs_inds], y[bs_inds]
         bs_slope_reps[i], bs_intercept_reps[i] = np.polyfit(bs_x , bs_y, 1)
 
