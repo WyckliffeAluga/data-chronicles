@@ -65,7 +65,7 @@ _ = plt.legend(('1975', '2012'), loc='lower right')
 
 plt.show()
 
-# define function to create bootstrap replicates for 1d data 
+# define function to create bootstrap replicates for 1d data
 def bootstrap_replicate_1d(data, func):
     return func(np.random.choice(data, size=len(data)))
 
@@ -86,3 +86,16 @@ def draw_bs_reps(data, func, size=1):
 mean_diff = (np.mean(bd_2012)) - (np.mean(bd_1975))
 
 # get the bootstrap replicates of means
+# Get bootstrap replicates of means
+bs_replicates_1975 = draw_bs_reps(bd_1975, np.mean, 10000)
+bs_replicates_2012 = draw_bs_reps(bd_2012, np.mean, 10000)
+
+# Compute samples of difference of means: bs_diff_replicates
+bs_diff_replicates = bs_replicates_2012 - bs_replicates_1975
+
+# Compute 95% confidence interval: conf_int
+conf_int = np.percentile(bs_diff_replicates, [2.5 , 97.5])
+
+# Print the results
+print('difference of means =', mean_diff, 'mm')
+print('95% confidence interval =', conf_int, 'mm')
