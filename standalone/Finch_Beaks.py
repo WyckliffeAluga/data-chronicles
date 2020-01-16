@@ -64,3 +64,25 @@ _ = plt.ylabel('ECDF')
 _ = plt.legend(('1975', '2012'), loc='lower right')
 
 plt.show()
+
+# define function to create bootstrap replicates for 1d data 
+def bootstrap_replicate_1d(data, func):
+    return func(np.random.choice(data, size=len(data)))
+
+# define bootstrap function
+def draw_bs_reps(data, func, size=1):
+    """Draw bootstrap replicates."""
+
+    # Initialize array of replicates: bs_replicates
+    bs_replicates = np.empty(size)
+
+    # Generate replicates
+    for i in range(size):
+        bs_replicates[i] = bootstrap_replicate_1d(data, func)
+
+    return bs_replicates
+
+# compute te difference of the sample means
+mean_diff = (np.mean(bd_2012)) - (np.mean(bd_1975))
+
+# get the bootstrap replicates of means
