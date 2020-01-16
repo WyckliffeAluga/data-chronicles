@@ -425,3 +425,19 @@ bd_offspring_fortis = np.array([
         9.7 ,  9.23,  9.43,  9.93,  8.47,  9.55,  9.28,  8.85,  8.9 ,
         8.75,  8.63,  9.  ,  9.43,  8.28,  9.23, 10.4 ,  9.  ,  9.8 ,
         9.77,  8.97,  8.37,  7.7 ,  7.9 ,  9.5 ,  8.2 ,  8.8 ])
+
+# Make scatter plots
+_ = plt.plot(bd_parent_fortis, bd_offspring_fortis,
+             marker='.', linestyle='none', color='blue', alpha=0.5)
+_ = plt.plot(bd_parent_scandens, bd_offspring_scandens,
+             marker='.', linestyle='none', color='red', alpha=0.5)
+
+# Label axes
+_ = plt.xlabel('parental beak depth (mm)')
+_ = plt.ylabel('offspring beak depth (mm)')
+
+# Add legend
+_ = plt.legend(('G. fortis', 'G. scandens'), loc='lower right')
+
+# Show plot
+plt.show()
