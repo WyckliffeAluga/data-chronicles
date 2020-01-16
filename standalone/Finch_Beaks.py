@@ -248,3 +248,10 @@ for i in range(100):
 
 # Draw the plot again
 plt.show()
+
+""" The linear regressions showed interesting information about the beak geometry.
+The slope was the same in 1975 and 2012, suggesting that for every millimeter gained in beak length,
+the birds gained about half a millimeter in depth in both years.
+However, if you are interested in the shape of the beak,
+you want to compare the ratio of beak length to beak depth.
+Let's make that comparison. """
