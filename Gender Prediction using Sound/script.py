@@ -32,7 +32,7 @@ author_df['first_name'] = first_name
 nysiis_name = []
 
 for name in author_df['first_name'] :
-    nytkids_yearly.append(fuzzy.nysiis(name))
+    nysiis_name.append(fuzzy.nysiis(name))
 
 # addd nysiis name on the author dataframe
 author_df['nysiis_name'] = nysiis_name
