@@ -3,6 +3,7 @@
 import seaborn as sns
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 # create the arrays
 
@@ -34,3 +35,30 @@ bd_2012 = np.array([
         8.5 , 10.6 ,  9.3 ,  8.9 ,  8.9 ,  9.7 ,  9.8 , 10.5 ,  8.4 ,
        10.  ,  9.  ,  8.7 ,  8.8 ,  8.4 ,  9.3 ,  9.8 ,  8.9 ,  9.8 ,
         9.1 ])
+
+# define ecdf function
+def ecdf(data):
+        """Compute ECDF for a one-dimensional array of measurements."""
+        # number of points
+        n = len(data)
+        # x-data
+        x = np.sort(data)
+        # y-data
+        y = np.arange(1, n+1) / n
+        return x, y
+
+# Compute ECDFs
+x_1975, y_1975 = ecdf(bd_1975)
+x_2012, y_2012 = ecdf(bd_2012)
+
+# Plot the ECDFs
+_ = plt.plot(x_1975, y_1975, marker='.', linestyle='none')
+_ = plt.plot(x_2012, y_2012, marker='.', linestyle='none')
+
+# Set margins
+plt.margins(0.02)
+
+# Add axis labels and legend
+_ = plt.xlabel('beak depth (mm)')
+_ = plt.ylabel('ECDF')
+_ = plt.legend(('1975', '2012'), loc='lower right')
