@@ -303,7 +303,7 @@ bd_parent_scandens = np.array([
         9.8213,  9.825 ,  9.7609,  9.6516,  9.5988,  9.546 ,  9.6516,
         9.7572,  9.8854, 10.0023,  9.3914]) # average beak depth of two parents of species G. bd_parent_scandens
 
-bd_offspring_scadens = np.array([
+bd_offspring_scandens = np.array([
         8.419 ,  9.2468,  8.1532,  8.0089,  8.2215,  8.3734,  8.5025,
         8.6392,  8.7684,  8.8139,  8.7911,  8.9051,  8.9203,  8.8747,
         8.943 ,  9.0038,  8.981 ,  9.0949,  9.2696,  9.1633,  9.1785,
