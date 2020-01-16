@@ -492,3 +492,13 @@ conf_int_fortis = np.percentile(bs_replicates_fortis, [2.5, 97.5])
 # Print results
 print('G. scandens:', r_scandens, conf_int_scandens)
 print('G. fortis:', r_fortis, conf_int_fortis)
+
+
+""" Remember that the Pearson correlation coefficient is the ratio of the covariance to the
+geometric mean of the variances of the two data sets.
+This is a measure of the correlation between parents and offspring,
+but might not be the best estimate of heritability.
+If you stop and think, it makes more sense to define heritability as
+the ratio of the covariance between parent and offspring to the variance of the parents alone.
+ """
+ 
