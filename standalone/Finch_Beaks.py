@@ -527,3 +527,9 @@ conf_int_fortis = np.percentile(replicates_fortis, [2.5, 97.5])
 # Print results
 print('G. scandens:', heritability_scandens, conf_int_scandens)
 print('G. fortis:', heritability_fortis, conf_int_fortis)
+
+
+""" Is beak depth heritable at all in G. scandens?
+The heritability of beak depth in G. scandens seems low.
+It could be that this observed heritability was just achieved by chance and beak depth is
+ actually not really heritable in the species. Let us test this hypothesis by doing paris permutation test """
