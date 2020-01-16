@@ -62,3 +62,5 @@ plt.margins(0.02)
 _ = plt.xlabel('beak depth (mm)')
 _ = plt.ylabel('ECDF')
 _ = plt.legend(('1975', '2012'), loc='lower right')
+
+plt.show()
