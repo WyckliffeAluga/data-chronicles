@@ -99,3 +99,6 @@ conf_int = np.percentile(bs_diff_replicates, [2.5 , 97.5])
 # Print the results
 print('difference of means =', mean_diff, 'mm')
 print('95% confidence interval =', conf_int, 'mm')
+
+# combine the mean of combines dataset
+combined_mean = np.mean(np.concatenate((bd_1975, bd_2012)))
