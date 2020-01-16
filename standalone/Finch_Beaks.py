@@ -120,7 +120,7 @@ p = np.sum(bs_diff_replicates >= mean_diff) / len(bs_diff_replicates)
 # Print p-value
 print('p =', p)
 
-print('we just proved that the lengths of the beaks did change between 1975 and 2012')
+print('we just proved that the depths of the beaks did change between 1975 and 2012')
 
 # create an array for beach lengths
 bl_1975 = np.array([
@@ -151,3 +151,21 @@ bl_2012 = np.array([
        14.  , 14.  , 14.1 , 14.7 , 13.4 , 13.8 , 13.4 , 13.8 , 12.4 ,
        14.1 , 12.9 , 13.9 , 14.3 , 13.2 , 14.2 , 13.  , 14.6 , 13.1 ,
        15.2 ])
+
+# let us try to figure out if the beaks got longer
+
+# Make scatter plot of 1975 data
+_ = plt.plot(bl_1975, bd_1975, marker='.',
+             linestyle='None', color='blue', alpha=0.5)
+
+# Make scatter plot of 2012 data
+_ = plt.plot(bl_2012, bd_2012, marker='.',
+            linestyle='None', color='red', alpha=0.5)
+
+# Label axes and make legend
+_ = plt.xlabel('beak length (mm)')
+_ = plt.ylabel('beak depth (mm)')
+_ = plt.legend(('1975', '2012'), loc='upper left')
+
+# Show the plot
+plt.show()
