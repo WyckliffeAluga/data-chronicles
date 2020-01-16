@@ -4,7 +4,7 @@
 import fuzzy
 import pandas as pd
 import numpy as np
-import matplolib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # explore the output
 fuzzy.nysiis('John')
