@@ -71,7 +71,7 @@ for name in author_df['nysiis_name'] :
         author_gender.append('Unknown')
 
     else:
-        author_gender.append(babies_df.iloc[author_idx, 3])
+        author_gender.append(babies_df.iloc[author_idx , 3])
 
 # adding authort_gender to the author df
 author_df['author_gender'] = author_gender
