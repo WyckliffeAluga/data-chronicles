@@ -46,13 +46,13 @@ gender = []
 for index, row in babies_df.iterrows() :
 
     if row['perc_female']  >  row['perc_male'] :
-        gender.append['F']
+        gender.append('F')
 
     elif row['perc_female'] < row['perc_male'] :
-        gender.append['M']
+        gender.append('M')
 
     elif row['perc_female'] == row['perc_male'] :
-        gender.append['N']
+        gender.append('N')
 
 # write a function that returns the location of an element in a list
 # where an item doesn't exist , it returns -1
