@@ -1,7 +1,7 @@
 # import modules
 
 import pandas as pd
-
+import numpy as np
 
 ## load dataset
 applications = pd.read_csv('datasets/cc_approvals.data', header=None)
@@ -25,3 +25,9 @@ print(applications.info())
 
 # inspeact missing values
 print(applications.tail(5))
+
+
+# replace missing "?" with NaN
+applications  = applications.replace('?', np.NaN)
+
+# inspace teh tail 
