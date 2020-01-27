@@ -17,11 +17,11 @@ As you can see from our first glance at the data, the dataset has a mixture of n
 # let us look at some other properties
 
 # print summary stats
-print(applications.describe())
-print('\n')
+#print(applications.describe())
+#print('\n')
 
 # print dataframe information
-print(applications.info())
+#print(applications.info())
 
 # inspeact missing values
 print(applications.tail(5))
@@ -30,4 +30,18 @@ print(applications.tail(5))
 # replace missing "?" with NaN
 applications  = applications.replace('?', np.NaN)
 
-# inspace teh tail 
+# impute the missing values with mean imputation
+applications.fillna(applications.mean(), inplace=True)
+
+# count number of NaN
+#print(applications.isnull().sum())
+
+# iterate over each valuer
+for col in applications :
+    # check if column is of object type
+    if applications[col].dtypes == 'object' :
+        # impute witht he most frequent values
+        applications = applications.fillna(applications[col].value_counts().index[0])
+
+# couount the number ofn NaNs
+print(applications.isnull().sum())
