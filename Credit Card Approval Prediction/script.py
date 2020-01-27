@@ -17,7 +17,7 @@ As you can see from our first glance at the data, the dataset has a mixture of n
 # let us look at some other properties
 
 # print summary stats
-print(applications.describe()
+print(applications.describe())
 print('\n')
 
 # print dataframe information
