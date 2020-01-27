@@ -2,6 +2,7 @@
 
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import LabelEncoder
 
 ## load dataset
 applications = pd.read_csv('datasets/cc_approvals.data', header=None)
@@ -45,3 +46,22 @@ for col in applications :
 
 # couount the number ofn NaNs
 print(applications.isnull().sum())
+
+"""
+Converting all the non-numeric values into numeric ones. This is done
+ because not only it results in a faster computation
+  but also many machine learning models (like XGBoost)
+  (and especially the ones developed using scikit-learn) require the
+   data to be in a strictly numeric format.
+  """
+ # instantiate LabelEncoder
+le = LabelEncoder()
+
+  # iterate over alll the values of each column
+  for col in applications.columns:
+      # compare if the dtype if object
+      if applications[col].dtypes =='object':
+          applications[col] = le.fit_transform(applications[col])
+      # use LabelEncoder to do numeric transformation
+
+print(applications.info())
