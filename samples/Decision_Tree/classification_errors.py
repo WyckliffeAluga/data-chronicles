@@ -61,3 +61,12 @@ RMSE_train = (MSE(y_train, y_pred_train))**(0.5)
 
 # Print RMSE_train
 print('Train RMSE: {:.2f}'.format(RMSE_train))
+
+
+"""
+Notice how the training error is roughly equal to the 10-folds CV error .
+
+this model is underfitting the
+ training set as the model is too
+ constrained to capture the nonlinear
+ dependencies between features and labels."""
