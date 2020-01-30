@@ -39,3 +39,15 @@ sgbr.fit(X_train, y_train)
 
 # Predict test set labels
 y_pred = sgbr.predict(X_test)
+
+# Import mean_squared_error as MSE
+from sklearn.metrics import mean_squared_error as MSE
+
+# Compute test set MSE
+mse_test = MSE(y_test, y_pred)
+
+# Compute test set RMSE
+rmse_test = mse_test ** (0.5)
+
+# Print rmse_test
+print('Test set RMSE of sgbr: {:.3f}'.format(rmse_test))
