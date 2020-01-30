@@ -34,3 +34,8 @@ sgbr = GradientBoostingRegressor(max_depth=4,
             max_features=0.75,
             n_estimators=200,                                
             random_state=2)
+# Fit sgbr to the training set
+sgbr.fit(X_train, y_train)
+
+# Predict test set labels
+y_pred = sgbr.predict(X_test)
