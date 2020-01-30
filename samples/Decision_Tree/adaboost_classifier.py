@@ -14,3 +14,9 @@ dt = DecisionTreeClassifier(max_depth=2, random_state=1)
 
 # Instantiate ada
 ada = AdaBoostClassifier(base_estimator=dt, n_estimators=180, random_state=1)
+
+# Fit ada to the training set
+ada.fit(X_train, y_train)
+
+# Compute the probabilities of obtaining the positive class
+y_pred_proba = ada.predict_proba(X_test)[:,1]
