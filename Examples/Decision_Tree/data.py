@@ -15,17 +15,22 @@ class Data(object):
         return method()
 
     def df_name_auto(self):
-        df = pd.read_csv('auto.csv')
+        df = pd.read_csv('datasets/auto.csv')
         df = pd.get_dummies(df, drop_first=True)
         return df
 
     def df_name_breast_cancer(self):
-        df = pd.read_csv('wbc.csv')
+        df = pd.read_csv('datasets/wbc.csv')
         df = pd.get_dummies(df, drop_first=True)
         df = df.dropna(axis=1,how='all')
         return df
 
-    def df_name_liver_processed(self):
-            return 'two'
     def df_name_liver_unprocessed(self):
-            return 'three'
+        df = pd.read_csv('datasets/indian_liver_patient.csv')
+        df = pd.get_dummies(df, drop_first=True)
+        df = df.fillna('ffill')
+        return df
+
+    def df_name_liver_preprocessed(self):
+        df = pd.read_csv('datasets/indian_liver_patient_preprocessed.csv')
+        return df
