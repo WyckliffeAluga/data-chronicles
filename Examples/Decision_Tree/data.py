@@ -71,17 +71,58 @@ class Data(object):
         df = pd.read_csv(filenames[Name])
         df = pd.get_dummies(df, drop_first=True)
         df = df.dropna(axis=1,how='all')
-        return df
+
+        X = df.loc[:, df.columns != 'diagnosis_M'].values
+        Y = df['diagnosis_M'].values
+
+        out = splitter(X,Y,size=test_size, random=SEED)
+
+        if frame == False:
+            return out
+        else :
+            out['df'] = df
+            return out
 
     def df_name_liver_unprocessed(self):
         df = pd.read_csv(filenames[Name])
         df = pd.get_dummies(df, drop_first=True)
         df = df.fillna('ffill')
-        return df
+        # split data
+        X = df.loc[:, df.columns != 'Dataset'].values
+        y = df['Dataset'].values
+
+        out = splitter(X,Y,size=test_size, random=SEED)
+
+        if frame == False:
+            return out
+        else :
+            out['df'] = df
+            return out
 
     def df_name_liver_preprocessed(self):
         df = pd.read_csv(filenames[Name])
-        return df
+        # split data
+        X = df.loc[:, df.columns != 'Liver_disease'].values
+        y = df['Liver_disease'].values
+
+        out = splitter(X,Y,size=test_size, random=SEED)
+
+        if frame == False:
+            return out
+        else :
+            out['df'] = df
+            return out
 
     def df_name_bikes(self):
         df = pd.read_csv(filenames[Name])
+
+        X = df.loc[:, df.columns != 'cnt'].values
+        Y = df['cnt'].values
+
+        out = splitter(X,Y,size=test_size, random=SEED)
+
+        if frame == False:
+            return out
+        else :
+            out['df'] = df
+            return out
