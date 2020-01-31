@@ -2,11 +2,35 @@
 
 # function that processes data to be used for Decision tree examples
 import pandas as pd
+import glob
 from sklearn.model_selection import train_test_split
 
+files = glob.glob('datasets/*.csv')
+
+names = []
+for file in files:
+    num = file
+    num = num.split('\\')[1]
+    num = num.split('.')
+    names.append(num[0])
+
+filenames = dict(zip(names,files ))
 SEED = 1
 frame = False
+Name = 'auto'
 test_size = 1
+
+def splitter(x,y, size=test_size, random=SEED):
+        # call function splitter to get the split data
+        x_train, x_test, y_train, y_test = train_test_split(x,y,
+                                                            test_size = size,
+                                                            random_state = random)
+            # create a dictionary for the train
+        split_values = {'x_train':x_train ,
+                        'x_test':x_test ,
+                        'y_train':y_train ,
+                        'y_test':y_test}
+        return split_values
 
 class Data(object):
     """docstring for Data."""
@@ -28,24 +52,15 @@ class Data(object):
 
     def df_name_auto(self):
         # read the automobile csc=v
-        df = pd.read_csv('datasets/auto.csv')
+        df = pd.read_csv(filenames[Name])
         # get dummies to remove the object type
         df = pd.get_dummies(df, drop_first=True)
         # split the dataframe into features and labels then convert them into numpy arrays
         X = df.loc[:, df.columns != 'mpg'].values
         Y = df['mpg'].values
 
-        # call function splitter to get the split data
-        x_train, x_test, y_train, y_test = train_test_split(X,Y,
-                                                            test_size = test_size,
-                                                            random_state = SEED
-                )
-        # create a dictionary for the train
-        out = {'x_train':x_train ,
-               'x_test':x_test ,
-               'y_train':y_train ,
-               'y_test':y_test}
-               
+        out = splitter(X,Y,size=test_size, random=SEED)
+
         if frame == False:
             return out
         else :
@@ -53,17 +68,20 @@ class Data(object):
             return out
 
     def df_name_breast_cancer(self):
-        df = pd.read_csv('datasets/wbc.csv')
+        df = pd.read_csv(filenames[Name])
         df = pd.get_dummies(df, drop_first=True)
         df = df.dropna(axis=1,how='all')
         return df
 
     def df_name_liver_unprocessed(self):
-        df = pd.read_csv('datasets/indian_liver_patient.csv')
+        df = pd.read_csv(filenames[Name])
         df = pd.get_dummies(df, drop_first=True)
         df = df.fillna('ffill')
         return df
 
     def df_name_liver_preprocessed(self):
-        df = pd.read_csv('datasets/indian_liver_patient_preprocessed.csv')
+        df = pd.read_csv(filenames[Name])
         return df
+
+    def df_name_bikes(self):
+        df = pd.read_csv(filenames[Name])
