@@ -21,35 +21,37 @@ class Data(object):
         frame = dataframe
         global test_size
         test_size = size
-        
+
         method_name='df_name_' + name
         method=getattr(self, method_name, lambda :'Invalid dataset please check the name and try again')
         return method()
-  
 
     def df_name_auto(self):
+        # read the automobile csc=v
         df = pd.read_csv('datasets/auto.csv')
+        # get dummies to remove the object type
         df = pd.get_dummies(df, drop_first=True)
-
+        # split the dataframe into features and labels then convert them into numpy arrays
         X = df.loc[:, df.columns != 'mpg'].values
         Y = df['mpg'].values
 
-        x_train, x_test, y_train, y_test = train_test_split(
-                                                            X, Y,
+        # call function splitter to get the split data
+        x_train, x_test, y_train, y_test = train_test_split(X,Y,
                                                             test_size = test_size,
                                                             random_state = SEED
-        )
-
+                )
+        # create a dictionary for the train
         out = {'x_train':x_train ,
                'x_test':x_test ,
                'y_train':y_train ,
                'y_test':y_test}
+               
         if frame == False:
             return out
         else :
             out['df'] = df
-            return out 
-        
+            return out
+
     def df_name_breast_cancer(self):
         df = pd.read_csv('datasets/wbc.csv')
         df = pd.get_dummies(df, drop_first=True)
