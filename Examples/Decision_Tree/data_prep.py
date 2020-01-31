@@ -38,7 +38,7 @@ class Data(object):
     def __init__(self):
         super(Data, self).__init__()
 
-    def split(self, name, size=0.2, seed=42, dataframe=False):
+    def prep(self, name, size=0.2, seed=42, dataframe=False):
         global SEED
         SEED = seed
         global frame
@@ -88,7 +88,7 @@ class Data(object):
         df = pd.get_dummies(df, drop_first=True)
         df = df.fillna('ffill')
         # split data
-        
+
         X = df.loc[:, df.columns != 'Dataset'].values
         Y = df['Dataset'].values
 
