@@ -2,6 +2,7 @@
 
 # function that processes data to be used for Decision tree examples
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 class Data(object):
     """docstring for Data."""
@@ -34,3 +35,24 @@ class Data(object):
     def df_name_liver_preprocessed(self):
         df = pd.read_csv('datasets/indian_liver_patient_preprocessed.csv')
         return df
+
+class Split(Data):
+    """docstring for Split."""
+    
+
+    def __init__(self):
+        super(Split, self).__init__()
+
+    def split(self, name):
+        method_name = 'df_name_' + name
+        method = getattr(self, method_name, lambda :'Invalid dataset please check the name and try again')
+
+        if name == 'auto' :
+            df = Data.df_name_auto
+            # extract feature colums X and labels Y
+            return df
+            X = df.loc[:, df.colums != 'mpg'].values
+            Y = df['mpg'].values
+
+            return(size(X))
+        return method()
