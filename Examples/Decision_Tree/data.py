@@ -4,22 +4,52 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+SEED = 1
+frame = False
+test_size = 1
+
 class Data(object):
     """docstring for Data."""
 
     def __init__(self):
         super(Data, self).__init__()
 
-    def dataset(self, name):
+    def split(self, name, size=0.2, seed=42, dataframe=False):
+        global SEED
+        SEED = seed
+        global frame
+        frame = dataframe
+        global test_size
+        test_size = size
+        
         method_name='df_name_' + name
         method=getattr(self, method_name, lambda :'Invalid dataset please check the name and try again')
         return method()
+  
 
     def df_name_auto(self):
         df = pd.read_csv('datasets/auto.csv')
         df = pd.get_dummies(df, drop_first=True)
-        return df
 
+        X = df.loc[:, df.columns != 'mpg'].values
+        Y = df['mpg'].values
+
+        x_train, x_test, y_train, y_test = train_test_split(
+                                                            X, Y,
+                                                            test_size = test_size,
+                                                            random_state = SEED
+        )
+
+        out = {'x_train':x_train ,
+               'x_test':x_test ,
+               'y_train':y_train ,
+               'y_test':y_test}
+        if frame == False:
+            return out
+        else :
+            out['df'] = df
+            return out 
+        
     def df_name_breast_cancer(self):
         df = pd.read_csv('datasets/wbc.csv')
         df = pd.get_dummies(df, drop_first=True)
@@ -35,24 +65,3 @@ class Data(object):
     def df_name_liver_preprocessed(self):
         df = pd.read_csv('datasets/indian_liver_patient_preprocessed.csv')
         return df
-
-class Split(Data):
-    """docstring for Split."""
-    
-
-    def __init__(self):
-        super(Split, self).__init__()
-
-    def split(self, name):
-        method_name = 'df_name_' + name
-        method = getattr(self, method_name, lambda :'Invalid dataset please check the name and try again')
-
-        if name == 'auto' :
-            df = Data.df_name_auto
-            # extract feature colums X and labels Y
-            return df
-            X = df.loc[:, df.colums != 'mpg'].values
-            Y = df['mpg'].values
-
-            return(size(X))
-        return method()
