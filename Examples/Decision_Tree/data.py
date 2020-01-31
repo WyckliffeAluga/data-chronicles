@@ -52,7 +52,7 @@ class Data(object):
 
     def df_name_auto(self):
         # read the automobile csc=v
-        df = pd.read_csv(filenames[Name])
+        df = pd.read_csv(filenames['auto'])
         # get dummies to remove the object type
         df = pd.get_dummies(df, drop_first=True)
         # split the dataframe into features and labels then convert them into numpy arrays
@@ -68,7 +68,7 @@ class Data(object):
             return out
 
     def df_name_breast_cancer(self):
-        df = pd.read_csv(filenames[Name])
+        df = pd.read_csv(filenames['wbc'])
         df = pd.get_dummies(df, drop_first=True)
         df = df.dropna(axis=1,how='all')
 
@@ -84,12 +84,13 @@ class Data(object):
             return out
 
     def df_name_liver_unprocessed(self):
-        df = pd.read_csv(filenames[Name])
+        df = pd.read_csv(filenames['indian_liver_patient'])
         df = pd.get_dummies(df, drop_first=True)
         df = df.fillna('ffill')
         # split data
+        
         X = df.loc[:, df.columns != 'Dataset'].values
-        y = df['Dataset'].values
+        Y = df['Dataset'].values
 
         out = splitter(X,Y,size=test_size, random=SEED)
 
@@ -100,10 +101,10 @@ class Data(object):
             return out
 
     def df_name_liver_preprocessed(self):
-        df = pd.read_csv(filenames[Name])
+        df = pd.read_csv(filenames['indian_liver_patient_preprocessed'])
         # split data
         X = df.loc[:, df.columns != 'Liver_disease'].values
-        y = df['Liver_disease'].values
+        Y = df['Liver_disease'].values
 
         out = splitter(X,Y,size=test_size, random=SEED)
 
@@ -114,7 +115,7 @@ class Data(object):
             return out
 
     def df_name_bikes(self):
-        df = pd.read_csv(filenames[Name])
+        df = pd.read_csv(filenames['bikes'])
 
         X = df.loc[:, df.columns != 'cnt'].values
         Y = df['cnt'].values
