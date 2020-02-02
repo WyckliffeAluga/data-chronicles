@@ -21,7 +21,7 @@ model.add(Dense(32, activation='relu', input_shape=(n_cols,)))
 model.add(Dense(2, activation='softmax'))
 
 # Compile the model
-model.compile(optimizer='sgd', loss='categorical_crossentropy', metrics='accuracy')
+model.compile(optimizer='sgd', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Fit the model
 model.fit(predictors, target)
