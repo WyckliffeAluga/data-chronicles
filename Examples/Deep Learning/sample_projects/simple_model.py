@@ -31,3 +31,6 @@ model.compile(optimizer='adam', loss='mean_squared_error')
 
 # Verify that model contains information from compiling
 print("Loss function: " + model.loss)
+
+# Fit the model
+model.fit(predictors, target)
