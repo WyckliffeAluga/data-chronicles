@@ -1,4 +1,8 @@
 
+import pandas as pd
+import keras
+from keras.layers import Dense
+from keras.models import Sequential
 
 # Create the model: model
 model = Sequential()

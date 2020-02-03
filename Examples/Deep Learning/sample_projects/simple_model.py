@@ -4,12 +4,13 @@
 import keras
 from keras.layers import Dense
 from keras.models import Sequential
+import pandas as pd
 
 # load the dataset
 df = pd.read_csv('datasets/hourly_wages.csv')
 
-predictors = [df.loc[:, df.columns != 'wage_per_hour']].values
-target     = df['wage_per_hour'].values
+predictors = [df.loc[:, df.columns != 'wage_per_hour']]
+target     = df['wage_per_hour']
 
 # Save the number of columns in predictors: n_cols
 n_cols = predictors.shape[1]
