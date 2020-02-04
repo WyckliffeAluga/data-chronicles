@@ -3,10 +3,12 @@ import pandas as pd
 from bokeh.plotting import figure ,ColumnDataSource
 from bokeh.io import output_file , show
 from bokeh.models import HoverTool, CategoricalColorMapper
+from bokeh.layouts import row
 
 auto_df = pd.read_csv('datasets/auto-mpg.csv')
 sprint_df = pd.read_csv('datasets/sprint.csv')
 glucose_df = pd.read_csv('datasets/glucose.csv')
+literacy_df = pd.read_csv('datasets/literacy_birth_rate.csv')
 
 class Visualizations(object):
     """docstring for Visualizations."""
@@ -93,5 +95,38 @@ class Visualizations(object):
         output_file('colormap.html')
         show(p)
 
-v = Visualizations()
-v.colormapping(auto_df)
+class Layouts(object):
+    """docstring for Visualizations."""
+
+    def __init__(self, df=None):
+        if df == None:
+            df = {}
+        else :
+            self.df = df
+            
+    def rows(self, df): 
+        # use literacy birth rate 
+        
+        # Create the first figure: p1
+        p1 = figure(x_axis_label='fertility (children per woman)', y_axis_label='female_literacy (% population)')
+        
+        source = ColumnDataSource(df)
+
+        # Add a circle glyph to p1
+        p1.circle(x='fertility', y='female_literacy', source=source)
+
+        # Create the second figure: p2
+        p2 = figure(x_axis_label='population', y_axis_label='female_literacy (% population)')
+
+        # Add a circle glyph to p2
+        p2.circle(x='population', y='female_literacy', source=source)
+
+        # Put p1 and p2 into a horizontal row: layout
+        layout = row(p1,p2)
+
+        # Specify the name of the output_file and show the result
+        output_file('fert_row.html')
+        show(layout)
+
+v = Layouts()
+v.rows(literacy_df)
