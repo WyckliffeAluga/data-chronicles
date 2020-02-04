@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from nxviz import MatrixPlot
 from nxviz.plots import ArcPlot
+from nxviz import CircosPlot
 
 G = pickle.load(open('datasets/github_users.p', 'rb'))
 
@@ -52,5 +53,19 @@ class GitHub(object):
         a.draw()
         plt.show()
 
+    def circos_plotting(self, G):
+        # Iterate over all the nodes, including the metadata
+        for n, d in G.nodes(data=True):
+
+            # Calculate the degree of each node: G.node[n]['degree']
+            G.node[n]['degree'] = nx.degree(G,n)
+
+            # Create the CircosPlot object: c
+        c = CircosPlot(graph=G, node_order='degree')
+
+        # Draw the CircosPlot object to the screen
+        c.draw()
+        plt.show()
+
 g = GitHub()
-g.arc_plotting()
+g.circos_plotting(G)
