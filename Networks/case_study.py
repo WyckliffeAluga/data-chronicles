@@ -67,5 +67,26 @@ class GitHub(object):
         c.draw()
         plt.show()
 
+    def maximum_cliques(self, G):
+        # Calculate the maximal cliques in G: cliques
+        cliques = nx.find_cliques(G)
+
+        # Count and print the number of maximal cliques in G
+        print(len(list(cliques)))
+
+    def maximal_clique(self, G):
+        # Find the author(s) that are part of the largest maximal clique: largest_clique
+        largest_clique = sorted(nx.find_cliques(G), key=lambda x:len(x))[-1]
+
+        # Create the subgraph of the largest_clique: G_lc
+        G_lc = G.subgraph(largest_clique)
+
+        # Create the CircosPlot object: c
+        c = CircosPlot(G_lc)
+
+        # Draw the CircosPlot to the screen
+        c.draw()
+        plt.show()
+
 g = GitHub()
-g.circos_plotting(G)
+g.maximal_clique(G)
