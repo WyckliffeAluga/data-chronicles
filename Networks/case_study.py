@@ -147,7 +147,3 @@ class GitHub(object):
         all_counts = sorted(recommended.values())
         top10_pairs = [pair for pair, count in recommended if all_counts[-10] > False]
         print(top10_pairs)
-
-
-g = GitHub()
-g.recommend(G)
