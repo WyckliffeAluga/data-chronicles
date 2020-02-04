@@ -2,7 +2,7 @@
 import pandas as pd
 from bokeh.plotting import figure ,ColumnDataSource
 from bokeh.io import output_file , show
-from bokeh.models import HoverTool
+from bokeh.models import HoverTool, CategoricalColorMapper
 
 auto_df = pd.read_csv('datasets/auto-mpg.csv')
 sprint_df = pd.read_csv('datasets/sprint.csv')
@@ -73,5 +73,25 @@ class Visualizations(object):
         output_file('hover_glyph.html')
         show(p)
 
+    def colormapping(self, df):
+        # use auto df
+        # Convert df to a ColumnDataSource: source
+        source = ColumnDataSource(df)
+
+        # Make a CategoricalColorMapper object: color_mapper
+        color_mapper = CategoricalColorMapper(factors=['Europe', 'Asia', 'US'],
+                                       palette=['red', 'green', 'blue'])
+
+        p = figure(x_axis_label='weight', y_axis_label='MPG')
+
+       # Add a circle glyph to the figure p
+        p.circle('weight', 'mpg', source=source,
+                color=dict(field='origin', transform=color_mapper),
+                legend='origin')
+
+        # Specify the name of the output file and show the result
+        output_file('colormap.html')
+        show(p)
+
 v = Visualizations()
-v.hovering(glucose_df)
+v.colormapping(auto_df)
