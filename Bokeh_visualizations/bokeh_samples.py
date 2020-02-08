@@ -103,13 +103,13 @@ class Layouts(object):
             df = {}
         else :
             self.df = df
-            
-    def rows(self, df): 
-        # use literacy birth rate 
-        
+
+    def rows(self, df):
+        # use literacy birth rate
+
         # Create the first figure: p1
         p1 = figure(x_axis_label='fertility (children per woman)', y_axis_label='female_literacy (% population)')
-        
+
         source = ColumnDataSource(df)
 
         # Add a circle glyph to p1
@@ -127,6 +127,17 @@ class Layouts(object):
         # Specify the name of the output_file and show the result
         output_file('fert_row.html')
         show(layout)
+
+class app(object):
+    """docstring for app."""
+
+    def __init__(self, df=None):
+        if df == None:
+            df = {}
+        else :
+            self.df = df
+
+    
 
 v = Layouts()
 v.rows(literacy_df)
