@@ -1,9 +1,10 @@
 
 import pandas as pd
 from bokeh.plotting import figure ,ColumnDataSource
-from bokeh.io import output_file , show
-from bokeh.models import HoverTool, CategoricalColorMapper
-from bokeh.layouts import row
+from bokeh.io import output_file , show , curdoc
+from bokeh.models import HoverTool, CategoricalColorMapper, Slider
+from bokeh.layouts import row, widgetbox
+
 
 auto_df = pd.read_csv('datasets/auto-mpg.csv')
 sprint_df = pd.read_csv('datasets/sprint.csv')
@@ -137,7 +138,16 @@ class app(object):
         else :
             self.df = df
 
-    
+    def slider(self, df) :
+        # Create a slider: slider
+        slider = Slider(title='my slider', start=0, end=10, step=0.1, value=2)
+
+        # Create a widgetbox layout: layout
+        layout = widgetbox(slider)
+
+        # Add the layout to the current document
+        curdoc().add_root(layout)
+
 
 v = Layouts()
 v.rows(literacy_df)
