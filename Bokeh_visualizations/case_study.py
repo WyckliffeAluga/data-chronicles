@@ -224,7 +224,7 @@ class Gapminder(object):
 
         # Set the legend.location attribute of the plot to 'top_right'
         plot.legend.location = 'top_right'
-                
+
         # Define the callback: update_plot
         def update_plot(attr, old, new):
             # Read the current value off the slider and 2 dropdowns: yr, x, y
@@ -283,7 +283,3 @@ class Gapminder(object):
         # Create layout and add to current document
         layout = row(widgetbox(slider, x_select, y_select), plot)
         curdoc().add_root(layout)
-
-
-g = Gapminder()
-g.beginning(df)
