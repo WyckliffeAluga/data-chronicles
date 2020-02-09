@@ -148,6 +148,36 @@ class app(object):
         # Add the layout to the current document
         curdoc().add_root(layout)
 
+    def slider_data(self, x, y) :
+        # Create ColumnDataSource: source
+        source = ColumnDataSource({'x':x, 'y':y})
+
+         Define a callback function: callback
+            def callback(attr, old, new):
+
+                # Read the current value of the slider: scale
+                scale = slider.value
+
+                # Compute the updated y using np.sin(scale/x): new_y
+                new_y = np.sin(scale/x)
+
+                # Update source with the new data values
+                source.data = {'x': x, 'y': new_y}
+
+                # Attach the callback to the 'value' property of slider
+            slider.on_change('value', callback)
+
+            # Create layout and add to current document
+
+        # Add a line to the plot
+        plot.line(x='x', y='y', source=source)
+
+        # Create a column layout: layout
+        layout = column(widgetbox(slider), plot)
+
+        # Add the layout to the current document
+        curdoc().add_root(layout)
+
 
 v = Layouts()
 v.rows(literacy_df)
