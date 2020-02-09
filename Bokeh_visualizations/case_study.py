@@ -37,7 +37,6 @@ class Gapminder(object):
         show(p)
 
     def beginning(self, data) :
-        # Import the necessary modules
         # Make the ColumnDataSource: source
         source = ColumnDataSource(data={
             'x'       : data.loc[1970].fertility,
