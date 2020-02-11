@@ -1,11 +1,13 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import numpy as np
 
-df = read_csv('datasets/indian_liver_patient_preprocessed.csv')
+df = pd.read_csv('datasets/indian_liver_patient_preprocessed.csv')
 
 X = df.loc[:, df.columns != 'Liver_disease'].values
-Y = df['Liver_disease'].values
+y = df['Liver_disease'].values
 
 X_train, X_test, y_train, y_test = train_test_split(X, y,
                                     test_size=0.3,
@@ -15,6 +17,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y,
 train_errs = list()
 valid_errs = list()
 
+C_values = np.array([0.001, 0.01, 0.1, 1, 10, 100, 1000])
 # Loop over values of C_value
 for C_value in [0.001, 0.01, 0.1, 1, 10, 100, 1000]:
     # Create LogisticRegression object and fit
