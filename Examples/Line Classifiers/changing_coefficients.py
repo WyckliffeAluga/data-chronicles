@@ -30,7 +30,6 @@ y = np.array([-1, -1, -1,  1,  1, -1,  1,  1,  1, -1, -1,  1,  1, -1,  1, -1, -1
 
 model = LogisticRegression()
 
-
 # Set the coefficients
 model.coef_ = np.array([[0,1]])
 model.intercept_ = np.array([0])
