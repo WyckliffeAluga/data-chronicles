@@ -9,9 +9,10 @@ import pandas as pd
 # load the dataset
 df = pd.read_csv('datasets/hourly_wages.csv')
 
-predictors = [df.loc[:, df.columns != 'wage_per_hour']]
-target     = df['wage_per_hour']
-
+#predictors_columns = ['union', 'education_years', 'experience_yrs', 'age', 'female', 'marr', 'south', 'manufacturing', 'construction']
+predictors = df.loc[:, df.columns != 'wage_per_hour'].values
+target     = df['wage_per_hour'].values
+print(predictors)
 # Save the number of columns in predictors: n_cols
 n_cols = predictors.shape[1]
 
