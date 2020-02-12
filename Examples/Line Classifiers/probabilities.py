@@ -20,17 +20,17 @@ model = LogisticRegression(C=0.1)
 
 # Fit and plot
 model.fit(X_train,y_train)
-pcl.plot_classifier(X_train,y_train,model,proba=True)
+#pcl.plot_classifier(X_train,y_train, model,proba=True)
 
 # Predict probabilities on training points
 prob = model.predict_proba(X)
 print("Maximum predicted probability", np.max(prob))
 
 lr = LogisticRegression()
-lr.fit(X,y)
+lr.fit(X_train,y_train)
 
 # Get predicted probabilities
-proba = lr.predict_proba(X)
+proba = lr.predict_proba(X_train)
 
 # Sort the example indices by their maximum probability
 proba_inds = np.argsort(np.max(proba,axis=1))

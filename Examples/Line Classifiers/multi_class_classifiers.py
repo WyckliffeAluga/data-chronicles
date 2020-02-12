@@ -36,7 +36,7 @@ lr_class_1 = LogisticRegression(C=100)
 lr_class_1.fit(X_train, y_train==1)
 
 # Plot the binary classifier (class 1 vs. rest)
-pcl.plot_4_classifiers(X_train, y_train==1, lr_class_1)
+pcl.plot_classifier(X_train, y_train==1, lr_class_1)
 
 
 from sklearn.svm import SVC

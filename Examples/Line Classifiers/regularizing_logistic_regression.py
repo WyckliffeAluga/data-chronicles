@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -35,7 +36,7 @@ plt.show()
 
 
 # Specify L1 regularization
-lr = LogisticRegression(penalty='l1')
+lr = LogisticRegression(penalty='l2')
 
 # Instantiate the GridSearchCV object and run the search
 searcher = GridSearchCV(lr, {'C':[0.001, 0.01, 0.1, 1, 10]})
