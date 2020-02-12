@@ -64,7 +64,7 @@ svm_small.fit(X_small, y_small)
 pcl.plot_classifier(X_small, y_small, svm_small, lims=(11,15,0,6))
 
 
-
+# Kernels 
 # Instantiate an RBF SVM
 svm = SVC()
 
