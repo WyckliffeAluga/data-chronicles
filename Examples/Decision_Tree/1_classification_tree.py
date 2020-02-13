@@ -1,31 +1,30 @@
 
 import data_prep
-
-# Import DecisionTreeClassifier from sklearn.tree
+import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
+from sklearn import utils
+
+
+# read the automobile csc=v
+df = pd.read_csv('datasets/auto.csv')
+# get dummies to remove the object type
+df = pd.get_dummies(df, drop_first=True)
+df = df.astype('int64')
+# split the dataframe into features and labels then convert them into numpy arrays
+X = df.loc[:, df.columns != 'mpg'].values
+y = df['mpg'].values
+
+X_train, X_test, y_train, y_test = train_test_split(X,y,
+                                                    test_size = 0.3,
+                                                    random_state = 123)
 
 SEED = 1
 
 # Instantiate a DecisionTreeClassifier 'dt' with a maximum depth of 6
 dt = DecisionTreeClassifier(max_depth=6, random_state=SEED)
-
-# Instantiate data_prep
-
-data = data_prep.Data()
-
-name = ['auto',
-        'breast_cancer',
-        'liver_unprocessed',
-        'liver_preprocessed',
-        'bikes']
-
-data = data.prep(name[0])
-
-X_train = data['x_train']
-X_test  = data['x_test']
-y_train = data['y_train']
-y_test  = data['y_test']
 
 # Fit dt to the training set
 dt.fit(X_train, y_train)
