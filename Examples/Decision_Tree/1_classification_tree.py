@@ -9,13 +9,12 @@ from sklearn import utils
 
 
 # read the automobile csc=v
-df = pd.read_csv('datasets/auto.csv')
-# get dummies to remove the object type
+df = pd.read_csv('datasets/wbc')
 df = pd.get_dummies(df, drop_first=True)
-df = df.astype('int64')
-# split the dataframe into features and labels then convert them into numpy arrays
-X = df.loc[:, df.columns != 'mpg'].values
-y = df['mpg'].values
+df = df.dropna(axis=1,how='all')
+
+X = df.loc[:, df.columns != 'diagnosis_M'].values
+y = df['diagnosis_M'].values
 
 X_train, X_test, y_train, y_test = train_test_split(X,y,
                                                     test_size = 0.3,
