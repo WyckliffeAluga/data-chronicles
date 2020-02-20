@@ -11,7 +11,7 @@ from sklearn.metrics import mean_squared_error as MSE
 from sklearn.linear_model import LinearRegression
 
 # load data
-df = pd.read_csv('auto.csv')
+df = pd.read_csv('datasets/auto.csv')
 
 # print sample
 #print(df.head(5))
@@ -30,8 +30,8 @@ features_colums = ['displ',
                     'origin_US']
 labels_column = ['mpg']
 
-X = df[features_colums]
-y = df[labels_column]
+X = df[features_colums].values
+y = df[labels_column].values
 # split the data
 x_train , x_test , y_train , y_test = train_test_split(X,
                                                       y,
