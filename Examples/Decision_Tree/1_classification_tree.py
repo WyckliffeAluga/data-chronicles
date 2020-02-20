@@ -6,12 +6,15 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 from sklearn import utils
+import matplotlib.pyplot as plt
 
 
 # read the automobile csc=v
-df = pd.read_csv('datasets/wbc')
+df = pd.read_csv('datasets/wbc.csv')
 df = pd.get_dummies(df, drop_first=True)
 df = df.dropna(axis=1,how='all')
+
+print(df.head())
 
 X = df.loc[:, df.columns != 'diagnosis_M'].values
 y = df['diagnosis_M'].values
@@ -35,6 +38,8 @@ print(y_pred[0:5])
 # Predict test set labels
 y_pred = dt.predict(X_test)
 
+plt.scatter(X_test[:,1], y_test, X_test[:,1], y_pred,)
+plt.show()
 # Compute test set accuracy
 acc = accuracy_score(y_pred, y_test)
 print("Test set accuracy: {:.2f}".format(acc))

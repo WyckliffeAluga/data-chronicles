@@ -8,7 +8,7 @@ from sklearn.metrics import mean_squared_error as MSE
 SEED = 1
 
 # load data
-df = pd.read_csv('auto.csv')
+df = pd.read_csv('datasets/auto.csv')
 
 # get dummies
 df = pd.get_dummies(df)

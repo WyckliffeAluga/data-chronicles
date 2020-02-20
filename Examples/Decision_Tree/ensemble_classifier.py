@@ -26,7 +26,7 @@ classifiers = [('Logistic Regression', lr), ('K Nearest Neighbours', knn), ('Cla
 
 
 # load the data
-df = pd.read_csv('indian_liver_patient_preprocessed.csv')
+df = pd.read_csv('datasets/indian_liver_patient_preprocessed.csv')
 
 # split data
 X = df.loc[:, df.columns != 'Liver_disease'].values
@@ -68,4 +68,4 @@ y_pred = vc.predict(X_test)
 accuracy = accuracy_score(y_pred, y_test)
 print('Voting Classifier: {:.3f}'.format(accuracy))
 
-### voting classifier achieves a test set accuracy of 75.3%. This value is greater than that achieved by LogisticRegression 
+### voting classifier achieves a test set accuracy of 75.3%. This value is greater than that achieved by LogisticRegression
