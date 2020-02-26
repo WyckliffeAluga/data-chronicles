@@ -22,4 +22,4 @@ joblib.dump(clf, 'filename.pkl')
 clf_from_joblib = joblib.load('filename.pkl')
 
 # Use the loaded model to make predictions
-clf_from_joblib.predict(X)
+clf_from_joblib.predict(x)
