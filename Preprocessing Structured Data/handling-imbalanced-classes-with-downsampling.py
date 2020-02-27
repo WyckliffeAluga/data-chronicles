@@ -30,3 +30,9 @@ idx_class_1 = np.where(y == 1)[0]
 # number of observations in each class
 n_class_0 = len(idx_class_0)
 n_class_1 = len(idx_class_1)
+
+# for every observation of class 0, randomly smpale from class 1 without replacement
+i_class1_downsampled = np.random.choice(idx_class_1 , size=n_class_0 ,replace=False)
+
+# join together class 0's target vector with the downsampled class 1 target vector
+np.hstack((y[idx_class_1] , y[i_class1_downsampled]))
