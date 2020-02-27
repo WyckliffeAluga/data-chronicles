@@ -8,7 +8,7 @@ x = np.array([[-500.5],
               [0],
               [100.1],
               [900.9]])
-              
+
 # Create scaler
 scaler = preprocessing.StandardScaler()
 
