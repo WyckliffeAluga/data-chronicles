@@ -81,3 +81,16 @@ network.add(Dropout(0.5))
 
 # Add fully connected layer with a softmax activation function
 network.add(Dense(number_of_classes, activation='softmax'))
+
+# Compile neural network
+network.compile(loss='categorical_crossentropy', # Cross-entropy
+                optimizer='rmsprop', # Root Mean Square Propagation
+                metrics=['accuracy']) # Accuracy performance metric
+
+# Train neural network
+network.fit(train_features, # Features
+            train_target, # Target
+            epochs=2, # Number of epochs
+            verbose=0, # Don't print description after each epoch
+            batch_size=1000, # Number of observations per batch
+            validation_data=(test_features, test_target)) # Data for evaluation
