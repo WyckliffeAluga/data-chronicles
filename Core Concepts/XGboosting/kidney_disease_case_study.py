@@ -2,6 +2,8 @@
 from sklearn_pandas import DataFrameMapper
 from sklearn_pandas import CategoricalImputer
 from sklearn.pipeline import FeatureUnion
+import pandas as pd
+
 
 # Check number of nulls in each feature column
 nulls_per_column = X.isnull().sum()
