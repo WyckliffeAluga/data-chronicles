@@ -1,10 +1,11 @@
-
+import numpy as np
+import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import cross_val_score
 
 
-boston_data = pd.read_csv("boston_housing.csv")
+boston_data = pd.read_csv("datasets/ames_housing_trimmed_processed.csv")
 
 X , y = boston_data.iloc[:,:-1] , boston_data.iloc[:,-1]
 
